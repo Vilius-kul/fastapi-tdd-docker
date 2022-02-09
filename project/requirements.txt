@@ -3,3 +3,4 @@ uvicorn
 pydantic
 asyncpg
 tortoise-orm
+aerich
