@@ -4,3 +4,5 @@ pydantic
 asyncpg
 tortoise-orm
 aerich
+pytest
+requests
