@@ -1,5 +1,8 @@
+from typing import List
+
 from app.api import crud
 from app.models.pydantic import SummaryPayloadSchema, SummaryResponseSchema
+from app.models.tortoise import SummarySchema
 from fastapi import APIRouter, HTTPException
 
 router = APIRouter()
@@ -14,3 +17,17 @@ async def create_summary(payload: SummaryPayloadSchema) -> SummaryResponseSchema
         "url": payload.url,
     }
     return response_object  # type: ignore
+
+
+@router.get("/{id}/", response_model=SummarySchema)
+async def read_summary(id: int) -> SummarySchema:
+    summary = await crud.get(id)
+    if not summary:
+        raise HTTPException(status_code=404, detail="Summary not found")
+
+    return summary  # type: ignore
+
+
+@router.get("/", response_model=List[SummarySchema])
+async def read_all_summaries() -> List[SummarySchema]:
+    return await crud.get_all()  # type: ignore
