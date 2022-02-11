@@ -6,3 +6,4 @@ tortoise-orm
 aerich
 pytest
 requests
+gunicorn
