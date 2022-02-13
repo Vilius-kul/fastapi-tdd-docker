@@ -7,3 +7,7 @@ aerich
 pytest
 requests
 gunicorn
+pytest-cov
+flake8
+black
+isort
