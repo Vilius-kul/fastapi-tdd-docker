@@ -80,8 +80,8 @@ jobs:
   runs-on: ubuntu-latest
   needs: [build, test]
   env:
-    HEROKU_APP_NAME: <APP_NAME>
-    HEROKU_REGISTRY_IMAGE: registry.heroku.com/${secure-brushlands-02722}/summarizer
+    HEROKU_APP_NAME: secure-brushlands-02722
+    HEROKU_REGISTRY_IMAGE: registry.heroku.com/${HEROKU_APP_NAME}/summarizer
   steps:
     - name: Checkout
       uses: actions/checkout@v2.4.0
